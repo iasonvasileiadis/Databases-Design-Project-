@@ -1,4 +1,4 @@
-21.
+
 with apollo18 as 
 	        					(select cars.model,COUNT(*) as counter
 	        					from episkeues
@@ -7,11 +7,10 @@ with apollo18 as
 	        					SELECT *
 	        					from apollo18
 	        					where counter=(Select max(counter) from apollo18);
-================================================================================
-2.
+
+
 select date_part('month', start_date) as month ,date_part('year', start_date) as year , avg(estimated_cost) as average from episkeues group by month,year order by year,month asc;
-===================================================================================================================
-3.
+
 WITH pwlhsh as (
 	        					SELECT  sum(value),kwd_pwlhth 
 	        					from pwlhseis  where eidos_agoras='Pwlhsh se idiwth' 
@@ -32,19 +31,17 @@ WITH pwlhsh as (
 	        					SELECT pwlhths,sum1-sum2 as maxx
 	        					from teliko 
 	        					where sum1-sum2=(select max(sum1-sum2) from teliko);
-=======================================================================================================
-4.
+
 SELECT kwd_episkeuhs,stop_date
 	        					FROM episkeues 
 	        					WHERE stop_date IS NULL;
-==========================================================================================================
-5.
+
 select date_part('month', start_date) as month,date_part('year', start_date) as year, kwd_episkeuhs,kwd_texnikou  
 	        					from episkeues  
 	        					where date_part('month', start_date)=date_part('month', NOW()) and date_part('year', start_date)=date_part('year', NOW()) and kwd_texnikou='"+kwdikos_texnikou+"'
 	        					group by month,year,kwd_episkeuhs
 	        					order by year,month asc;
-6.
+
 with spaceship as (select frame_number,date_part('year', stop_date) as year,count(*) as c  
 	        					FROM episkeues where date_part('year', stop_date)=date_part('year', NOW())  
 	        					GROUP BY year,frame_number 
